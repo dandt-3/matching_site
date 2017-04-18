@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" %>
-    
+
 <%@ page import="jp.co.dandt.harada.model.Pref"%>
-    
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,10 +21,10 @@
     <h1 id="logo"><a href="#"><img src="common/img/スクリーンショット 2017-04-04 0.16.07.png" alt="ロゴ"></a></h1>
     <ul id="header_link">
       <li><a href="#" target="_blank">▶︎企業様はこちら</a>&nbsp;&nbsp;|</li>
-      <li><a href="#" target="_blank">▶︎学校様はこちら</a></li>
+      <li><a href="Javaリソース/src/jp.co.dandt.koshimizu.servlet/index.java" target="_blank">▶︎学校様はこちら</a></li>
     </ul>
   </div>
-  <!-- /.inner --> 
+  <!-- /.inner -->
 </header>
 
 <!-- グロバナビ -->
@@ -41,15 +41,15 @@
 <div id="top_contents">
   <div class="inner">
     <div id="mv"> <img src="common/img/0308.jpg"> </div>
-    <!-- /#mv --> 
+    <!-- /#mv -->
   </div>
-  <!-- /.inner --> 
+  <!-- /.inner -->
 </div>
-<!-- #.top_contents--> 
+<!-- #.top_contents-->
 
 <!-- コンテンツ -->
-<div id="contents" class="clearfix"> 
-  
+<div id="contents" class="clearfix">
+
   <!-- メイン部分 -->
   <main>
     <section id="section_1">
@@ -62,7 +62,7 @@
       <form id="search_area" action="#" method="post">
         <select name="area">
           <option value="" selected>選択してください</option>
-          
+
           <%
 			for(String str_pref: Pref.PREF) {
 			%>
@@ -70,7 +70,7 @@
 							<%
 			}
 			%>
-          
+
         </select>
         <input type="submit" value="検索">
       </form>
@@ -106,7 +106,7 @@
         あまり知られていない子会社を発見したい方や安定性を重視する方にオススメです。</p>
     </section>
   </main>
-  
+
   <!-- サイドバー -->
   <div id="side">
     <div class="login">
@@ -136,12 +136,12 @@
          </form>
       <p><a href="#">会員ＩＤまたはパスワードがご不明な方</a></p>
     </div>
-    <!-- /.login --> 
+    <!-- /.login -->
   </div>
-  <!-- /#side --> 
-  
+  <!-- /#side -->
+
 </div>
-<!-- /#contents --> 
+<!-- /#contents -->
 
 <!-- フッター -->
 <footer id="footer">
@@ -193,7 +193,7 @@
     </nav>
   </div>
   <!-- /.inner -->
-  
+
   <hr class="footer_bottom_line">
   <div class="footer_bottom">
     <div class="inner">
@@ -207,9 +207,9 @@
       </ul>
       <p class="copyright"><small>© 2013-2016 有限会社アゼリシステム</small></p>
     </div>
-    <!-- /.inner --> 
+    <!-- /.inner -->
   </div>
-  <!-- /.footer_bottom --> 
+  <!-- /.footer_bottom -->
 </footer>
 </body>
 </html>
