@@ -17,14 +17,22 @@ public class User implements Serializable {
 	private String login_id;	// ログインID(メールアドレス)
 	private String pass;		// パスワード
 	private String pass_check;		// 確認パスワード
-	private String name1;		// 姓
-	private String name2;		// 名
-	private String kana1;		// セイ
-	private String kana2;		// メイ
-	private String b_year;			// 生年月日(年)
-	private String b_month;		// 生年月日(月)
-	private String b_day;			// 生年月日(日)
-	private String sex;			// 性別(0:未回答、1:男性、2:女性)
+	private String school_name;		// 学校名
+	private String school_name_kana;	// ガッコウメイ
+	private String staff_name1;		//担当者名(姓)
+	private String staff_name2;		//担当者名(名)
+	private String staff_kana1;		//タントウシャメイ(セイ)
+	private String staff_kana2;		//タントウシャメイ(メイ)
+	private String build_year;			// 創立年月日(年)
+	private String build_month;		// 創立年月日(月)
+	private String build_day;			// 創立年月日(日)
+	private String cours;		//コース
+	private String total_stu1;		//1年の生徒数
+	private String total_stu2;		//2年の生徒数
+	private String total_stu3;		//3年の生徒数
+	private String recruit1;		//1年の募集人数
+	private String recruit2;		//2年の募集人数
+	private String recruit3;		//3年の募集人数
 	private String post_cd;		// 郵便番号
 	private String address1;	// 都道府県
 	private String address2;	// 市区町村
@@ -55,21 +63,30 @@ public class User implements Serializable {
 	public User() {}
 
 	// newした時に必要な引数
-	public User(String login_id, String pass, String pass_check, String name1, String name2, String kana1, String kana2,
-			String b_year, String b_month, String b_day, String sex, String post_cd, String address1, String address2,
+	public User(String login_id, String pass, String pass_check, String school_name, String school_name_kana, String staff_name1, String staff_name2,String staff_kana1,String staff_kana2,
+			String build_year, String build_month, String build_day,String cours,String total_stu1,String total_stu2,
+			String total_stu3,String recruit1,String recruit2,String recruit3, String post_cd, String address1, String address2,
 			String address3, String address4, String tel, String mailsend_flg, String entry_ymd, String modified_ymd,
 			int del_flg) {
 		this.login_id = login_id;
 		this.pass = pass;
 		this.pass_check = pass_check;
-		this.name1 = name1;
-		this.name2 = name2;
-		this.kana1 = kana1;
-		this.kana2 = kana2;
-		this.b_year = b_year;
-		this.b_month = b_month;
-		this.b_day = b_day;
-		this.sex = sex;
+		this.school_name = school_name;
+		this.school_name_kana = school_name_kana;
+		this.staff_name1 = staff_name1;
+		this.staff_name2 = staff_name2;
+		this.staff_kana1 = staff_kana1;
+		this.staff_kana2 = staff_kana2;
+		this.build_year = build_year;
+		this.build_month = build_month;
+		this.build_day = build_day;
+		this.cours = cours;
+		this.total_stu1 = total_stu1;
+		this.total_stu2 = total_stu2;
+		this.total_stu3 = total_stu3;
+		this.recruit1 = recruit1;
+		this.recruit2 = recruit2;
+		this.recruit3 = recruit3;
 		this.post_cd = post_cd;
 		this.address1 = address1;
 		this.address2 = address2;
@@ -104,60 +121,116 @@ public class User implements Serializable {
 		this.pass_check = pass_check;
 	}
 
-	public String getName1() {
-		return name1;
+	public String getSchool_name() {
+		return school_name;
 	}
-	public void setName1(String name1) {
-		this.name1 = name1;
-	}
-
-	public String getName2() {
-		return name2;
-	}
-	public void setName2(String name2) {
-		this.name2 = name2;
+	public void setSchool_name(String school_name) {
+		this.school_name = school_name;
 	}
 
-	public String getKana1() {
-		return kana1;
+	public String getSchool_name_kana() {
+		return school_name_kana;
 	}
-	public void setKana1(String kana1) {
-		this.kana1 = kana1;
-	}
-
-	public String getKana2() {
-		return kana2;
-	}
-	public void setKana2(String kana2) {
-		this.kana2 = kana2;
+	public void setSchool_name_kana(String school_name_kana) {
+		this.school_name_kana = school_name_kana;
 	}
 
-	public String getB_year() {
-		return b_year;
+	public String getStaff_name1() {
+		return staff_name1;
 	}
-	public void setB_year(String b_year) {
-		this.b_year = b_year;
-	}
-
-	public String getB_month() {
-		return b_month;
-	}
-	public void setB_month(String b_month) {
-		this.b_month = b_month;
+	public void setStaff_name1(String kana1) {
+		this.staff_name1 = staff_name1;
 	}
 
-	public String getB_day() {
-		return b_day;
+	public String getStaff_name2() {
+		return staff_name2;
 	}
-	public void setB_day(String b_day) {
-		this.b_day = b_day;
+	public void setStaff_name2(String Staff_name2) {
+		this.staff_name2 = staff_name2;
 	}
 
-	public String getSex() {
-		return sex;
+	public String getStaff_kana1(){
+		return staff_kana1;
 	}
-	public void setSex(String sex) {
-		this.sex = sex;
+	public void setStaff_kana1(String Staff_kana1){
+		this.staff_kana1 = staff_kana1;
+	}
+
+	public String getStaff_kana2(){
+		return staff_kana2;
+	}
+	public void setStaff_kana2(String Staff_kana2){
+		this.staff_kana2 = staff_kana2;
+	}
+
+	public String getBuild_year() {
+		return build_year;
+	}
+	public void setBuild_year(String build_year) {
+		this.build_year = build_year;
+	}
+
+	public String getBuild_month() {
+		return build_month;
+	}
+	public void setBuild_month(String build_month) {
+		this.build_month = build_month;
+	}
+
+	public String getBuild_day() {
+		return build_day;
+	}
+	public void setBuild_day(String build_day) {
+		this.build_day = build_day;
+	}
+
+	public String getCours() {
+		return cours;
+	}
+	public void setCours(String cours) {
+		this.cours = cours;
+	}
+
+	public String getTotal_stu1(){
+		return total_stu1;
+	}
+	public void setTotal_stu1(String total_stu1){
+		this.total_stu1 = total_stu1;
+	}
+
+	public String getTotal_stu2(){
+		return total_stu2;
+	}
+	public void setTotal_stu2(String total_stu2){
+		this.total_stu2 = total_stu2;
+	}
+
+	public String getTotal_stu3(){
+		return total_stu3;
+	}
+	public void setTotal_stu3(String total_stu3){
+		this.total_stu3 = total_stu3;
+	}
+
+	public String getRecruit1(){
+		return recruit1;
+	}
+	public void setRecruit1(String recruit1){
+		this.recruit1 = recruit1;
+	}
+
+	public String getRecruit2(){
+		return recruit2;
+	}
+	public void setRecruit2(String recruit2){
+		this.recruit2 = recruit2;
+	}
+
+	public String getRecruit3(){
+		return recruit3;
+	}
+	public void setRecruit3(String recruit3){
+		this.recruit3 = recruit3;
 	}
 
 	public String getPost_cd() {
@@ -259,32 +332,68 @@ public class User implements Serializable {
 			erre_msg.add("確認パスワードは必須項目です。");
 		}
 
-		if (name1.length() == 0) {
-			erre_msg.add("お名前(姓)は必須項目です。");
+		if (school_name.length() == 0) {
+			erre_msg.add("学校名は必須項目です。");
 		}
 
-		if (name2.length() == 0) {
-			erre_msg.add("お名前(名)は必須項目です。");
+		if (school_name_kana.length() == 0) {
+			erre_msg.add("フリガナ(ガッコウメイ)は必須項目です。");
 		}
 
-		if (kana1.length() == 0) {
-			erre_msg.add("フリガナ(セイ)は必須項目です。");
+		if (staff_name1.length() == 0) {
+			erre_msg.add("担当者名(名)は必須項目です。");
 		}
 
-		if (kana2.length() == 0) {
-			erre_msg.add("フリガナ(メイ)は必須項目です。");
+		if (staff_name2.length() == 0) {
+			erre_msg.add("担当者名(姓)は必須項目です。");
 		}
 
-		if (b_year.length() == 0) {
-			erre_msg.add("生年月日(年)は必須項目です。");
+		if (staff_kana1.length() == 0) {
+			erre_msg.add("タントウシャメイ(メイ)は必須項目です。");
 		}
 
-		if (b_month.length() == 0) {
-			erre_msg.add("生年月日(月)は必須項目です。");
+		if (staff_kana2.length() == 0) {
+			erre_msg.add("タントウシャメイ(セイ)は必須項目です。");
 		}
 
-		if (b_day.length() == 0) {
-			erre_msg.add("生年月日(日)は必須項目です。");
+		if (build_year.length() == 0) {
+			erre_msg.add("創立年月日(年)は必須項目です。");
+		}
+
+		if (build_month.length() == 0) {
+			erre_msg.add("創立年月日(月)は必須項目です。");
+		}
+
+		if (build_day.length() == 0) {
+			erre_msg.add("創立年月日(日)は必須項目です。");
+		}
+
+		if (cours.length() == 0) {
+			erre_msg.add("コースは必須項目です。");
+		}
+
+		if (total_stu1.length() == 0) {
+			erre_msg.add("一年の生徒数は必須項目です。");
+		}
+
+		if (total_stu2.length() == 0) {
+			erre_msg.add("二年の生徒数は必須項目です。");
+		}
+
+		if (total_stu3.length() == 0) {
+			erre_msg.add("三年の生徒数は必須項目です。");
+		}
+
+		if (recruit1.length() == 0) {
+			erre_msg.add("一年の募集人数は必須項目です。");
+		}
+
+		if (recruit2.length() == 0) {
+			erre_msg.add("二年の募集人数は必須項目です。");
+		}
+
+		if (recruit3.length() == 0){
+			erre_msg.add("三年の募集人数は必須項目です。");
 		}
 
 		if (post_cd.length() == 0) {
@@ -378,12 +487,16 @@ public class User implements Serializable {
 	// 名前(フリガナ)のチェック
 	void kanaCheck() {
 
-		if (!kana1.matches(PATTERN_KANA)) {
-			erre_msg.add("フリガナ(セイ)はカタカナで入力してください。");
+		if (!school_name_kana.matches(PATTERN_KANA)){
+			erre_msg.add("フリガナ(ガッコウメイ)はカタカナで入力してください。");
 		}
 
-		if (!kana2.matches(PATTERN_KANA)) {
-			erre_msg.add("フリガナ(メイ)はカタカナで入力してください。");
+		if (!staff_kana1.matches(PATTERN_KANA)) {
+			erre_msg.add("タントウシャメイ(セイ)はカタカナで入力してください。");
+		}
+
+		if (!staff_kana2.matches(PATTERN_KANA)) {
+			erre_msg.add("タントウシャメイ(メイ)はカタカナで入力してください。");
 		}
 
 	}
@@ -416,7 +529,7 @@ public class User implements Serializable {
 		}
 	}
 
-	// 性別を数値で判断し文字列を設定(0:未回答、1:男性、2:女性)
+	/*// 性別を数値で判断し文字列を設定(0:未回答、1:男性、2:女性)
 	public void sexToText() {
 
 		str_format_sex = "";
@@ -435,7 +548,7 @@ public class User implements Serializable {
 			str_format_sex = "女性";
 			break;
 		}
-	}
+	}*/
 
 
 	// エラーメッセージを取得
@@ -448,9 +561,9 @@ public class User implements Serializable {
 		return s_error_msg;
 	}
 
-	// 文字列に変換した性別を取得
+	/*// 文字列に変換した性別を取得
 	public String getFormatSex() {
 		return str_format_sex;
-	}
+	}*/
 }
 
