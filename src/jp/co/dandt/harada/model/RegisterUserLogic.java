@@ -1,6 +1,6 @@
 /*****************************************************************************
  * 
- * DBに接続するまでのロジッククラス
+ * UserテーブルDBに接続するまでのロジッククラス
  * 
  * 
  *****************************************************************************/
@@ -26,6 +26,13 @@ public class RegisterUserLogic {
 		M_UserDAO dao = new M_UserDAO();
 		return dao.isSameLoginId(str_mail);
 		
+	}
+	
+	// ユーザIDとパスワードがあるか確認し、Userテーブル情報を取得するメソッド
+	public User requestUserData (RequestUser reguest_user) throws ClassNotFoundException, SQLException {
+
+		M_UserDAO dao = new M_UserDAO();
+		return dao.getUserData(reguest_user);
 	}
 	
 }

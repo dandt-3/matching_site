@@ -13,6 +13,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import jp.co.dandt.harada.model.RequestUser;
 import jp.co.dandt.harada.model.User;
 
 public class M_UserDAO {
@@ -26,6 +27,7 @@ public class M_UserDAO {
 	// 会員登録処理
 	// 登録できればture、できなければralseを返す
 	public boolean canRegisterUser(User registerUser) {
+		// Connection DBMSへの接続や切断を行うクラス
 		Connection conn = null;
 		try {	
 			Class.forName(DRIVER_NAME);
@@ -110,4 +112,65 @@ public class M_UserDAO {
 		}
 		return false;		
 	}
+
+	// リクエストされたユーザIDとパスワードを用いてレコードを検索し、ユーザ情報を取得する
+	public User getUserData(RequestUser request_user) throws ClassNotFoundException,SQLException {
+
+		// User変数にnullを入れ初期化。ローカル変数は初期化必要
+		User user_data = null;
+		Connection conn = null;
+
+		try {
+
+			Class.forName(DRIVER_NAME);
+			conn = DriverManager.getConnection(JDBC_URL,DB_USER,DB_PASS);
+
+			// SELECT文(検索)を送信(FROM テーブル名 WHERE 条件式)
+			String sql = "SELECT * FROM M_USER WHERE LOGIN_ID=? AND PASS=? AND DEL_FLG=?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			pStmt.setString(1, request_user.getLogin_id());
+			pStmt.setString(2, request_user.getPass());
+			pStmt.setString(3, "0"); // 削除フラグがオフのデータ
+
+			// 結果を取得
+			ResultSet rs = pStmt.executeQuery();
+
+			// 取得した結果、一致したユーザが存在した場合 //
+			if (rs.next()) { // 次の要素へ
+				// 検索結果からデータを取得
+				String str_login_id = rs.getString("LOGIN_ID");
+				String str_pass = rs.getString("PASS");
+				String str_name1 = rs.getString("NAME1");
+				String str_name2 = rs.getString("NAME2");
+				String str_kana1 = rs.getString("KANA1");
+				String str_kana2 = rs.getString("KANA2");
+				String str_b_year = rs.getString("B_YEAR");
+				String str_b_month = rs.getString("B_MONTH");
+				String str_b_day = rs.getString("B_DAY");
+				String str_sex = rs.getString("SEX");
+				String str_post_cd = rs.getString("POST_CD");
+				String str_address1 = rs.getString("ADDRESS1");
+				String str_address2 = rs.getString("ADDRESS2");
+				String str_address3 = rs.getString("ADDRESS3");
+				String str_address4 = rs.getString("ADDRESS4");
+				String str_tel = rs.getString("TEL");
+				String str_mailsend_flg = rs.getString("MAILSEND_FLG");
+				String str_entry_ymd = rs.getString("ENTRY_YMD");
+				String str_modified_ymd = rs.getString("MODIFIED_YMD");
+
+				// 一致したユーザのデータを格納
+				// ここでstaffがnullじゃなくなり、returnに飛ぶ。
+				user_data = new User(str_login_id,str_pass,"",str_name1,str_name2,str_kana1,str_kana2,str_b_year,str_b_month,str_b_day,str_sex,str_post_cd,str_address1,str_address2,str_address3,str_address4,str_tel,str_mailsend_flg,str_entry_ymd,str_modified_ymd,0);
+			}
+			// 必ずDBを切断
+		} finally { 
+			if (conn != null) {
+				conn.close();
+			}
+		}
+		return user_data;		
+		// 取得できなかった場合nullが戻る
+	}	
+
 }

@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" %>
-    
+	pageEncoding="UTF-8"%>
+
+<%@ page import="jp.co.dandt.harada.model.User"%>
+
+<% User user = (User) session.getAttribute("user"); %>
+<% String error_msg = (String) request.getAttribute("error_msg"); %>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +23,7 @@
 	<header>
 		<div class="inner clearfix">
 			<h1 id="logo">
-				<a href="#"><img src="スクリーンショット 2017-03-06 22.58.39.png"
+				<a href="#"><img src="common/img/スクリーンショット 2017-04-04 0.16.07.png"
 					alt="ロゴ"></a>
 			</h1>
 			<ul id="header_link">
@@ -46,7 +52,7 @@
 			<!-- ◯◯さんのマイページ -->
 			<div class="h1Area">
 				<div class="wrap930 clearfix">
-					<h1>yukidiru_2929 さんのMyページ</h1>
+					<h1><%= user.getName1() %> <%= user.getName2() %> さんのMyページ</h1>
 					<p>
 						<a
 							href="http://help.kakaku.com/cgi-bin/mt/mt-search.cgi?IncludeBlogs=3&amp;tag=My%E3%83%9A%E3%83%BC%E3%82%B8&amp;limit=20"
@@ -142,7 +148,7 @@
 						<div class="clearfix">
 							<p class="userName">
 								<a
-									href="http://kakaku.com/auth/profile/profile.aspx?NickName=yukidiru_2929"><span>yukidiru_2929</span>さん</a>
+									href="http://kakaku.com/auth/profile/profile.aspx?NickName=yukidiru_2929"><span><%= user.getName1() %> <%= user.getName2() %></span> さん</a>
 							</p>
 
 							<p class="profileImg">
@@ -279,7 +285,7 @@
 							<li><a href="#">お気に入り</a></li>
 							<li><a href="#">コミュニティ</a></li>
 						</ul></li>
-						</ul>
+				</ul>
 			</nav>
 		</div>
 		<!-- /.inner -->

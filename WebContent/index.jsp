@@ -2,6 +2,8 @@
     pageEncoding="UTF-8" %>
     
 <%@ page import="jp.co.dandt.harada.model.Pref"%>
+
+<% String error_msg = (String) request.getAttribute("error_msg"); %>
     
 <!DOCTYPE html>
 <html>
@@ -112,13 +114,21 @@
     <div class="login">
       <hr class="side_line">
       <h2>会員ログイン</h2>
-      <form id="toppage_login" action="RegisterForm" method="get">
+      <form id="toppage_login" action="MyPage" method="post">
         <ul class="login-menu">
+        
+        <%
+        if (!(error_msg == null || error_msg == "")) {
+        %>
+        <li><font color="red"><%= error_msg %></font></li>
+        <%
+        }
+        %>
           <li>
-            <input type="text" name="memberId" placeholder="会員ID [半角英数字]">
+            <input type="text" name="login_id" placeholder="会員ID [半角英数字]">
           </li>
           <li>
-            <input type="password" name="password" placeholder="パスワード [半角英数字]">
+            <input type="password" name="pass" placeholder="パスワード [半角英数字]">
           </li>
         </ul>
         <p>
@@ -130,7 +140,7 @@
             <input type="submit" value="ログイン">
           </li>
           <li>
-            <input type="submit" value="会員登録">
+          <input type="button" value="会員登録" onClick="location.href='RegisterForm'">
           </li>
         </ul>
          </form>
